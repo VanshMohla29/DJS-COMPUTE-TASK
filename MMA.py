@@ -10,6 +10,10 @@ for i in ['height_cm', 'reach_in_cm', 'weight_in_kg']:  #filling nan values in r
 for j in ["stance"]:
     df[j]=df[j].fillna("Switch")
 print(df.isna().sum()) 
+def profile(x):
+    for i in df["name"]:
+        if (i==x):
+            print("Name: "+x+" Wins: "+df.wins[i]+" Losses: "+df.losses[i]+" Draws: "+df.draws[i])
 plt.hist(df["wins"],bins=50,label="Wins")
 plt.title("Trend in wins and losses")
 plt.hist(df["losses"],bins=50,label="Losses")
@@ -38,5 +42,7 @@ plt.scatter([df["takedown_accuracy"]],df["wins"])
 plt.title("Takedown Accuracy vs Wins")
 plt.xlabel("Takedown Accuracy")
 plt.ylabel("Wins")
-
+x=input("Enter Full Name of the figher")
+profile(x)
 plt.show()
+
